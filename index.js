@@ -118,3 +118,45 @@ console.log(myNewArray);
 myNewArray.unshift("alausa");
 myNewArray.insert(1, "goods");
 console.log(myNewArray);
+
+////STRING
+const reverseString = (str) => str.split("").reverse().join("");
+
+console.log(reverseString("hello"));
+console.log(reverseString("Goodee"));
+
+const checkPalindrome = (str) => {
+  const string = str.split("").reverse().join("");
+  if (string === str) {
+    console.log("Palindrome");
+  } else {
+    console.log("Not A Palindrome");
+  }
+};
+
+checkPalindrome("hello");
+checkPalindrome("abba");
+
+const reverseInt = (str) => {
+  const num = str.toString().split("").reverse().join("");
+  const reversedNum = parseInt(num) * Math.sign(str);
+  return reversedNum;
+};
+
+console.log(reverseInt(1234));
+
+const fizzBuzz = (firstNum, lastNum) => {
+  for (let i = firstNum; i <= lastNum; i++) {
+    if (i % 5 == 0 && i % 3 == 0) {
+      console.log("fizzBuzz");
+    } else if (i % 5 == 0) {
+      console.log("Buzz");
+    } else if (i % 3 == 0) {
+      console.log("Fizz");
+    } else {
+      console.log(i);
+    }
+  }
+};
+
+fizzBuzz(1, 20);
