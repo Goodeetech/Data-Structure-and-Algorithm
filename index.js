@@ -145,6 +145,20 @@ const reverseInt = (str) => {
 
 console.log(reverseInt(1234));
 
+const fizzBuzz1 = (firstNum, lastNum) => {
+  for (let i = firstNum; i <= lastNum; i++) {
+    if (i % 5 == 0 && i % 3 == 0) {
+      console.log("fizzBuzz");
+    } else if (i % 5 == 0) {
+      console.log("Buzz");
+    } else if (i % 3 == 0) {
+      console.log("Fizz");
+    } else {
+      console.log(i);
+    }
+  }
+};
+
 const fizzBuzz = (firstNum, lastNum) => {
   for (let i = firstNum; i <= lastNum; i++) {
     if (i % 5 == 0 && i % 3 == 0) {
