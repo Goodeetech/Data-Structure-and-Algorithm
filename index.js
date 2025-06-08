@@ -69,6 +69,12 @@ class MyArray {
     this.length++;
     return item;
   }
+  pop() {
+    const lastItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return lastItem;
+  }
   shift() {
     const firstItem = this.data[0];
 
@@ -117,60 +123,61 @@ myNewArray.push("Asharo");
 console.log(myNewArray);
 myNewArray.unshift("alausa");
 myNewArray.insert(1, "goods");
+myNewArray.pop();
 console.log(myNewArray);
 
-////STRING
-const reverseString = (str) => str.split("").reverse().join("");
+// ////STRING
+// const reverseString = (str) => str.split("").reverse().join("");
 
-console.log(reverseString("hello"));
-console.log(reverseString("Goodee"));
+// console.log(reverseString("hello"));
+// console.log(reverseString("Goodee"));
 
-const checkPalindrome = (str) => {
-  const string = str.split("").reverse().join("");
-  if (string === str) {
-    console.log("Palindrome");
-  } else {
-    console.log("Not A Palindrome");
-  }
-};
+// const checkPalindrome = (str) => {
+//   const string = str.split("").reverse().join("");
+//   if (string === str) {
+//     console.log("Palindrome");
+//   } else {
+//     console.log("Not A Palindrome");
+//   }
+// };
 
-checkPalindrome("hello");
-checkPalindrome("abba");
+// checkPalindrome("hello");
+// checkPalindrome("abba");
 
-const reverseInt = (str) => {
-  const num = str.toString().split("").reverse().join("");
-  const reversedNum = parseInt(num) * Math.sign(str);
-  return reversedNum;
-};
+// const reverseInt = (str) => {
+//   const num = str.toString().split("").reverse().join("");
+//   const reversedNum = parseInt(num) * Math.sign(str);
+//   return reversedNum;
+// };
 
-console.log(reverseInt(1234));
+// console.log(reverseInt(1234));
 
-const fizzBuzz1 = (firstNum, lastNum) => {
-  for (let i = firstNum; i <= lastNum; i++) {
-    if (i % 5 == 0 && i % 3 == 0) {
-      console.log("fizzBuzz");
-    } else if (i % 5 == 0) {
-      console.log("Buzz");
-    } else if (i % 3 == 0) {
-      console.log("Fizz");
-    } else {
-      console.log(i);
-    }
-  }
-};
+// const fizzBuzz1 = (firstNum, lastNum) => {
+//   for (let i = firstNum; i <= lastNum; i++) {
+//     if (i % 5 == 0 && i % 3 == 0) {
+//       console.log("fizzBuzz");
+//     } else if (i % 5 == 0) {
+//       console.log("Buzz");
+//     } else if (i % 3 == 0) {
+//       console.log("Fizz");
+//     } else {
+//       console.log(i);
+//     }
+//   }
+// };
 
-const fizzBuzz = (firstNum, lastNum) => {
-  for (let i = firstNum; i <= lastNum; i++) {
-    if (i % 5 == 0 && i % 3 == 0) {
-      console.log("fizzBuzz");
-    } else if (i % 5 == 0) {
-      console.log("Buzz");
-    } else if (i % 3 == 0) {
-      console.log("Fizz");
-    } else {
-      console.log(i);
-    }
-  }
-};
+// const fizzBuzz = (firstNum, lastNum) => {
+//   for (let i = firstNum; i <= lastNum; i++) {
+//     if (i % 5 == 0 && i % 3 == 0) {
+//       console.log("fizzBuzz");
+//     } else if (i % 5 == 0) {
+//       console.log("Buzz");
+//     } else if (i % 3 == 0) {
+//       console.log("Fizz");
+//     } else {
+//       console.log(i);
+//     }
+//   }
+// };
 
-fizzBuzz(1, 20);
+// fizzBuzz(1, 20);
