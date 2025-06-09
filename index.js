@@ -208,3 +208,72 @@ const findIndex = (array, target) => {
 };
 
 console.log(findIndex([2, 3, 6, 8, 11, 15], 9)); // ➜ [0, 1]
+
+//Linked List
+
+class Node {
+  constructor(value) {
+    this.head = value;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor(value) {
+    this.head = new Node(value);
+    this.tail = this.head;
+    this.length = 1;
+  }
+  push(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+  }
+  pop() {
+    if (!this.head) {
+      return undefined;
+    }
+    let temp = this.head;
+    let prev = this.head;
+
+    while (temp.next) {
+      prev = temp;
+      temp = prev.next;
+    }
+
+    this.tail = prev;
+    this.tail.next = null;
+    this.length--;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return temp;
+  }
+  unshift(value) {
+    const newNode = new Node(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+}
+
+const myNewLinkedList = new LinkedList(1);
+myNewLinkedList.push(10);
+myNewLinkedList.push(20);
+myNewLinkedList.push(30);
+myNewLinkedList.pop();
+myNewLinkedList.unshift(4);
+console.log(myNewLinkedList);
