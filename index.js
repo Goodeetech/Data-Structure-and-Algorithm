@@ -126,58 +126,85 @@ myNewArray.insert(1, "goods");
 myNewArray.pop();
 console.log(myNewArray);
 
-// ////STRING
-// const reverseString = (str) => str.split("").reverse().join("");
+////STRING
+const reverseString = (str) => str.split("").reverse().join("");
 
-// console.log(reverseString("hello"));
-// console.log(reverseString("Goodee"));
+console.log(reverseString("hello"));
+console.log(reverseString("Goodee"));
 
-// const checkPalindrome = (str) => {
-//   const string = str.split("").reverse().join("");
-//   if (string === str) {
-//     console.log("Palindrome");
-//   } else {
-//     console.log("Not A Palindrome");
-//   }
-// };
+const checkPalindrome = (str) => {
+  const string = str.split("").reverse().join("");
+  if (string === str) {
+    console.log("Palindrome");
+  } else {
+    console.log("Not A Palindrome");
+  }
+};
 
-// checkPalindrome("hello");
-// checkPalindrome("abba");
+checkPalindrome("hello");
+checkPalindrome("abba");
 
-// const reverseInt = (str) => {
-//   const num = str.toString().split("").reverse().join("");
-//   const reversedNum = parseInt(num) * Math.sign(str);
-//   return reversedNum;
-// };
+const reverseInt = (str) => {
+  const num = str.toString().split("").reverse().join("");
+  const reversedNum = parseInt(num) * Math.sign(str);
+  return reversedNum;
+};
 
-// console.log(reverseInt(1234));
+console.log(reverseInt(1234));
 
-// const fizzBuzz1 = (firstNum, lastNum) => {
-//   for (let i = firstNum; i <= lastNum; i++) {
-//     if (i % 5 == 0 && i % 3 == 0) {
-//       console.log("fizzBuzz");
-//     } else if (i % 5 == 0) {
-//       console.log("Buzz");
-//     } else if (i % 3 == 0) {
-//       console.log("Fizz");
-//     } else {
-//       console.log(i);
-//     }
-//   }
-// };
+const fizzBuzz1 = (firstNum, lastNum) => {
+  for (let i = firstNum; i <= lastNum; i++) {
+    if (i % 5 == 0 && i % 3 == 0) {
+      console.log("fizzBuzz");
+    } else if (i % 5 == 0) {
+      console.log("Buzz");
+    } else if (i % 3 == 0) {
+      console.log("Fizz");
+    } else {
+      console.log(i);
+    }
+  }
+};
 
-// const fizzBuzz = (firstNum, lastNum) => {
-//   for (let i = firstNum; i <= lastNum; i++) {
-//     if (i % 5 == 0 && i % 3 == 0) {
-//       console.log("fizzBuzz");
-//     } else if (i % 5 == 0) {
-//       console.log("Buzz");
-//     } else if (i % 3 == 0) {
-//       console.log("Fizz");
-//     } else {
-//       console.log(i);
-//     }
-//   }
-// };
+const fizzBuzz = (firstNum, lastNum) => {
+  for (let i = firstNum; i <= lastNum; i++) {
+    if (i % 5 == 0 && i % 3 == 0) {
+      console.log("fizzBuzz");
+    } else if (i % 5 == 0) {
+      console.log("Buzz");
+    } else if (i % 3 == 0) {
+      console.log("Fizz");
+    } else {
+      console.log(i);
+    }
+  }
+};
 
-// fizzBuzz(1, 20);
+fizzBuzz(1, 20);
+
+const chunk = (array, size) => {
+  const chunked = [];
+  let index = 0;
+
+  while (index < array.length) {
+    const chunk = array.slice(index, index + size);
+    chunked.push(chunk);
+    index += size;
+  }
+  return chunked;
+};
+
+console.log(chunk([1, 2, 3, 4, 5, 6, 7], 3));
+
+const findIndex = (array, target) => {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[i] + array[j] === target) {
+        return [i, j]; // return the indexes
+      }
+    }
+  }
+  return null; // If no match found
+};
+
+console.log(findIndex([2, 3, 6, 8, 11, 15], 9)); // ➜ [0, 1]
