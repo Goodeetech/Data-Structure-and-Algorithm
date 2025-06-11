@@ -291,16 +291,66 @@ class LinkedList {
     return this.head;
   }
   getLast() {
-    // if (!this.head) {
-    //   return undefined;
-    // }
-    // let temp = this.head;
+    if (!this.head) {
+      return undefined;
+    }
+    let temp = this.head;
 
-    // while (temp.next) {
-    //   temp = temp.next;
-    // }
-    // return temp;
-    return this.tail || undefined;
+    while (temp.next) {
+      temp = temp.next;
+    }
+    return temp;
+    // return this.tail || undefined;
+  }
+  get(index) {
+    let counter = 0;
+    let temp = this.head;
+    while (temp) {
+      if (counter == index) {
+        return temp;
+      }
+
+      counter++;
+      temp = temp.next;
+    }
+    return null;
+  }
+
+  set(index, value) {
+    let counter = 0;
+    let temp = this.head;
+
+    while (temp) {
+      if (counter === index) {
+        temp.value = value;
+        return true;
+      }
+      temp = temp.next;
+      counter++;
+    }
+    return false;
+  }
+
+  insert(index, value) {
+    const newNode = new Node(value);
+
+    if ((index = 0)) {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    let temp = this.head;
+    let counter = 0;
+
+    while (temp && counter < index - 1) {
+      temp = temp.next;
+      counter++;
+    }
+    if (!temp) return false;
+    newNode.next = temp.next;
+    temp.next = newNode;
+    this.length++;
+    return true;
   }
 }
 
@@ -314,4 +364,8 @@ myNewLinkedList.shift();
 console.log(myNewLinkedList.getFirst());
 
 console.log(myNewLinkedList);
-console.log(myNewLinkedList.getLast());
+// console.log(myNewLinkedList.getLast());
+console.log(myNewLinkedList.get(1));
+console.log(myNewLinkedList.set(1, 50));
+console.log(myNewLinkedList.insert(1, 30));
+console.log(myNewLinkedList);
