@@ -334,9 +334,15 @@ class LinkedList {
   insert(index, value) {
     const newNode = new Node(value);
 
-    if (index === 0) {
+    if (index == 0) {
       newNode.next = this.head;
       this.head = newNode;
+      this.length++;
+      return true;
+    }
+    if (index == this.length) {
+      this.length++;
+      return this.push(value);
     }
 
     let temp = this.head;
@@ -367,5 +373,5 @@ console.log(myNewLinkedList);
 // console.log(myNewLinkedList.getLast());
 console.log(myNewLinkedList.get(1));
 console.log(myNewLinkedList.set(1, 50));
-console.log(myNewLinkedList.insert(1, 30));
+console.log(myNewLinkedList.insert(0, 30));
 console.log(myNewLinkedList);
