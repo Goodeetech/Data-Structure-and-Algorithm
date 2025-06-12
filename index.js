@@ -334,7 +334,7 @@ class LinkedList {
   insert(index, value) {
     const newNode = new Node(value);
 
-    if ((index = 0)) {
+    if (index === 0) {
       newNode.next = this.head;
       this.head = newNode;
     }
