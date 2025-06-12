@@ -358,20 +358,27 @@ class LinkedList {
     this.length++;
     return true;
   }
+  size() {
+    let temp = this.head;
+    let counter = 0;
+
+    if (!temp) {
+      return undefined;
+    }
+
+    while (temp) {
+      temp = temp.next;
+      counter++;
+    }
+    return counter;
+  }
+  clear() {
+    this.head = null;
+  }
 }
 
 const myNewLinkedList = new LinkedList(1);
 myNewLinkedList.push(10);
 myNewLinkedList.push(20);
 myNewLinkedList.push(30);
-myNewLinkedList.pop();
-myNewLinkedList.unshift(4);
-myNewLinkedList.shift();
-console.log(myNewLinkedList.getFirst());
-
-console.log(myNewLinkedList);
-// console.log(myNewLinkedList.getLast());
-console.log(myNewLinkedList.get(1));
-console.log(myNewLinkedList.set(1, 50));
-console.log(myNewLinkedList.insert(0, 30));
-console.log(myNewLinkedList);
+console.log(myNewLinkedList.clear());
