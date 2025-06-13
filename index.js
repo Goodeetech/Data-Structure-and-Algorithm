@@ -211,193 +211,193 @@
 
 // //Linked List
 
-class Node {
-  constructor(value) {
-    this.head = value;
-    this.next = null;
-  }
-}
+// class Node {
+//   constructor(value) {
+//     this.head = value;
+//     this.next = null;
+//   }
+// }
 
-class LinkedList {
-  constructor(value) {
-    this.head = new Node(value);
-    this.tail = this.head;
-    this.length = 1;
-  }
-  push(value) {
-    const newNode = new Node(value);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-    }
-    this.tail.next = newNode;
-    this.tail = newNode;
-    this.length++;
-  }
-  pop() {
-    if (!this.head) {
-      return undefined;
-    }
-    let temp = this.head;
-    let prev = this.head;
+// class LinkedList {
+//   constructor(value) {
+//     this.head = new Node(value);
+//     this.tail = this.head;
+//     this.length = 1;
+//   }
+//   push(value) {
+//     const newNode = new Node(value);
+//     if (!this.head) {
+//       this.head = newNode;
+//       this.tail = newNode;
+//     }
+//     this.tail.next = newNode;
+//     this.tail = newNode;
+//     this.length++;
+//   }
+//   pop() {
+//     if (!this.head) {
+//       return undefined;
+//     }
+//     let temp = this.head;
+//     let prev = this.head;
 
-    while (temp.next) {
-      prev = temp;
-      temp = prev.next;
-    }
+//     while (temp.next) {
+//       prev = temp;
+//       temp = prev.next;
+//     }
 
-    this.tail = prev;
-    this.tail.next = null;
-    this.length--;
+//     this.tail = prev;
+//     this.tail.next = null;
+//     this.length--;
 
-    if (this.length === 0) {
-      this.head = null;
-      this.tail = null;
-    }
-    return temp;
-  }
-  unshift(value) {
-    const newNode = new Node(value);
+//     if (this.length === 0) {
+//       this.head = null;
+//       this.tail = null;
+//     }
+//     return temp;
+//   }
+//   unshift(value) {
+//     const newNode = new Node(value);
 
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      newNode.next = this.head;
-      this.head = newNode;
-    }
+//     if (!this.head) {
+//       this.head = newNode;
+//       this.tail = newNode;
+//     } else {
+//       newNode.next = this.head;
+//       this.head = newNode;
+//     }
 
-    this.length++;
-    return this;
-  }
-  shift() {
-    if (!this.head) {
-      return undefined;
-    }
-    const newHead = this.head.next;
-    const removedNode = this.head;
-    if (this.length == 0) {
-      this.tail = null;
-    }
+//     this.length++;
+//     return this;
+//   }
+//   shift() {
+//     if (!this.head) {
+//       return undefined;
+//     }
+//     const newHead = this.head.next;
+//     const removedNode = this.head;
+//     if (this.length == 0) {
+//       this.tail = null;
+//     }
 
-    this.head = newHead;
-    this.length--;
-    return removedNode;
-  }
-  getFirst() {
-    if (!this.head) {
-      return undefined;
-    }
-    return this.head;
-  }
-  getLast() {
-    if (!this.head) {
-      return undefined;
-    }
-    let temp = this.head;
+//     this.head = newHead;
+//     this.length--;
+//     return removedNode;
+//   }
+//   getFirst() {
+//     if (!this.head) {
+//       return undefined;
+//     }
+//     return this.head;
+//   }
+//   getLast() {
+//     if (!this.head) {
+//       return undefined;
+//     }
+//     let temp = this.head;
 
-    while (temp.next) {
-      temp = temp.next;
-    }
-    return temp;
-    // return this.tail || undefined;
-  }
-  get(index) {
-    let counter = 0;
-    let temp = this.head;
-    while (temp) {
-      if (counter == index) {
-        return temp;
-      }
+//     while (temp.next) {
+//       temp = temp.next;
+//     }
+//     return temp;
+//     // return this.tail || undefined;
+//   }
+//   get(index) {
+//     let counter = 0;
+//     let temp = this.head;
+//     while (temp) {
+//       if (counter == index) {
+//         return temp;
+//       }
 
-      counter++;
-      temp = temp.next;
-    }
-    return null;
-  }
+//       counter++;
+//       temp = temp.next;
+//     }
+//     return null;
+//   }
 
-  set(index, value) {
-    let counter = 0;
-    let temp = this.head;
+//   set(index, value) {
+//     let counter = 0;
+//     let temp = this.head;
 
-    while (temp) {
-      if (counter === index) {
-        temp.value = value;
-        return true;
-      }
-      temp = temp.next;
-      counter++;
-    }
-    return false;
-  }
+//     while (temp) {
+//       if (counter === index) {
+//         temp.value = value;
+//         return true;
+//       }
+//       temp = temp.next;
+//       counter++;
+//     }
+//     return false;
+//   }
 
-  insert(index, value) {
-    const newNode = new Node(value);
+//   insert(index, value) {
+//     const newNode = new Node(value);
 
-    if (index == 0) {
-      newNode.next = this.head;
-      this.head = newNode;
-      this.length++;
-      return true;
-    }
-    if (index == this.length) {
-      this.length++;
-      return this.push(value);
-    }
+//     if (index == 0) {
+//       newNode.next = this.head;
+//       this.head = newNode;
+//       this.length++;
+//       return true;
+//     }
+//     if (index == this.length) {
+//       this.length++;
+//       return this.push(value);
+//     }
 
-    let temp = this.head;
-    let counter = 0;
+//     let temp = this.head;
+//     let counter = 0;
 
-    while (temp && counter < index - 1) {
-      temp = temp.next;
-      counter++;
-    }
-    if (!temp) return false;
-    newNode.next = temp.next;
-    temp.next = newNode;
-    this.length++;
-    return true;
-  }
-  size() {
-    let temp = this.head;
-    let counter = 0;
+//     while (temp && counter < index - 1) {
+//       temp = temp.next;
+//       counter++;
+//     }
+//     if (!temp) return false;
+//     newNode.next = temp.next;
+//     temp.next = newNode;
+//     this.length++;
+//     return true;
+//   }
+//   size() {
+//     let temp = this.head;
+//     let counter = 0;
 
-    if (!temp) {
-      return undefined;
-    }
+//     if (!temp) {
+//       return undefined;
+//     }
 
-    while (temp) {
-      temp = temp.next;
-      counter++;
-    }
-    return counter;
-  }
-  clear() {
-    this.head = null;
-  }
-  reverse() {
-    let temp = this.head;
+//     while (temp) {
+//       temp = temp.next;
+//       counter++;
+//     }
+//     return counter;
+//   }
+//   clear() {
+//     this.head = null;
+//   }
+//   reverse() {
+//     let temp = this.head;
 
-    this.head = this.tail;
-    this.tail = temp;
-    let next = temp;
-    let prev = null;
+//     this.head = this.tail;
+//     this.tail = temp;
+//     let next = temp;
+//     let prev = null;
 
-    for (let i = 0; i < this.length; i++) {
-      next = temp.next;
-      temp.next = prev;
-      prev = temp;
-      temp = next;
-    }
-  }
-}
+//     for (let i = 0; i < this.length; i++) {
+//       next = temp.next;
+//       temp.next = prev;
+//       prev = temp;
+//       temp = next;
+//     }
+//   }
+// }
 
-const myNewLinkedList = new LinkedList(1);
-myNewLinkedList.push(10);
-myNewLinkedList.push(20);
-myNewLinkedList.push(30);
-myNewLinkedList.reverse();
-console.log(myNewLinkedList);
+// const myNewLinkedList = new LinkedList(1);
+// myNewLinkedList.push(10);
+// myNewLinkedList.push(20);
+// myNewLinkedList.push(30);
+// myNewLinkedList.reverse();
+// console.log(myNewLinkedList);
 
 // class Node {
 //   constructor(value) {
@@ -486,3 +486,23 @@ console.log(myNewLinkedList);
 // myNewDoublyList.shift();
 
 // console.log(myNewDoublyList);
+
+////////////STACK //////////////////
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Stack {
+  constructor(value) {
+    const newNode = new Node(value);
+    this.first = newNode;
+    this.length = 1;
+  }
+}
+
+const theStack = new Stack(20);
+console.log(theStack);
