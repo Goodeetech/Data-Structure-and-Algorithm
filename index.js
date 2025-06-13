@@ -489,6 +489,8 @@
 
 ////////////STACK //////////////////
 
+///LIFO////
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -502,7 +504,36 @@ class Stack {
     this.first = newNode;
     this.length = 1;
   }
+  push(value) {
+    const newNode = new Node(value);
+    if (!this.first) {
+      this.first = newNode;
+    } else {
+      newNode.next = this.first;
+      this.first = newNode;
+    }
+    this.length++;
+    return this;
+  }
+  pop() {
+    const temp = this.first;
+    if (!this.first) {
+      return undefined;
+    }
+    if (this.length === 1) {
+      this.first = null;
+      this.length--;
+    } else {
+      this.first = this.first.next;
+      temp.next = null;
+    }
+    this.length--;
+    return temp;
+  }
 }
 
 const theStack = new Stack(20);
+theStack.push(50);
+theStack.push(40);
+theStack.pop();
 console.log(theStack);
