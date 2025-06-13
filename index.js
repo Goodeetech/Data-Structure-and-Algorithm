@@ -427,6 +427,37 @@ class DoublyLinkedList {
     this.length--;
     return temp;
   }
+
+  unshift(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+
+      this.head.prev = newNode;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+  shift() {
+    const temp = this.head;
+    if (!this.head) {
+      return undefined;
+    }
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      temp.next.prev = null;
+      this.head = temp.next;
+      temp.next = null;
+    }
+    this.length--;
+    return temp;
+  }
 }
 
 const myNewDoublyList = new DoublyLinkedList(1);
@@ -435,5 +466,7 @@ myNewDoublyList.push(20);
 myNewDoublyList.push(30);
 myNewDoublyList.push(40);
 myNewDoublyList.pop();
+myNewDoublyList.unshift(20);
+myNewDoublyList.shift();
 
 console.log(myNewDoublyList);
