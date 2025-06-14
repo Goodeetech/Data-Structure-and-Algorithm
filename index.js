@@ -491,49 +491,119 @@
 
 ///LIFO////
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
 
-class Stack {
-  constructor(value) {
-    const newNode = new Node(value);
-    this.first = newNode;
-    this.length = 1;
-  }
-  push(value) {
-    const newNode = new Node(value);
-    if (!this.first) {
-      this.first = newNode;
-    } else {
-      newNode.next = this.first;
-      this.first = newNode;
-    }
-    this.length++;
-    return this;
-  }
-  pop() {
-    const temp = this.first;
-    if (!this.first) {
-      return undefined;
-    }
-    if (this.length === 1) {
-      this.first = null;
-      this.length--;
-    } else {
-      this.first = this.first.next;
-      temp.next = null;
-    }
-    this.length--;
-    return temp;
-  }
-}
+// class Stack {
+//   constructor(value) {
+//     const newNode = new Node(value);
+//     this.first = newNode;
+//     this.length = 1;
+//   }
+//   push(value) {
+//     const newNode = new Node(value);
+//     if (!this.first) {
+//       this.first = newNode;
+//     } else {
+//       newNode.next = this.first;
+//       this.first = newNode;
+//     }
+//     this.length++;
+//     return this;
+//   }
+//   pop() {
+//     const temp = this.first;
+//     if (!this.first) {
+//       return undefined;
+//     }
+//     if (this.length === 1) {
+//       this.first = null;
+//       this.length--;
+//     } else {
+//       this.first = this.first.next;
+//       temp.next = null;
+//     }
+//     this.length--;
+//     return temp;
+//   }
+//   min() {
+//     let current = this.first;
+//     let minValue = current.value;
 
-const theStack = new Stack(20);
-theStack.push(50);
-theStack.push(40);
-theStack.pop();
-console.log(theStack);
+//     while (current.next) {
+//       current = current.next;
+
+//       if (current.value < minValue) {
+//         minValue = current.value;
+//       }
+//     }
+//     return minValue;
+//   }
+// }
+
+// const theStack = new Stack(20);
+// theStack.push(50);
+// theStack.push(40);
+// theStack.pop();
+// console.log(theStack);
+// console.log(theStack.min());
+
+//////////QUEUE //////
+
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+
+// class Queue {
+//   constructor(value) {
+//     const newNode = new Node(value);
+//     this.first = newNode;
+//     this.last = newNode;
+//     this.length = 1;
+//   }
+//   enqueue(value) {
+//     const newNode = new Node(value);
+//     let temp = this.last;
+//     if (!this.first) {
+//       this.first = newNode;
+//       this.last = newNode;
+//     } else {
+//       temp.next = newNode;
+//       this.last = newNode;
+//     }
+//     this.length++;
+//     return this;
+//   }
+
+//   dequeue() {
+//     if (!this.first) return undefined;
+
+//     const temp = this.first;
+
+//     if (this.length === 1) {
+//       this.first = null;
+//       this.last = null;
+//     } else {
+//       this.first = this.first.next;
+//     }
+
+//     this.length--;
+//     return temp;
+//   }
+// }
+
+// const myQueue = new Queue(10);
+
+// myQueue.enqueue(40);
+// myQueue.enqueue(50);
+// myQueue.enqueue(60);
+// myQueue.dequeue();
+
+// console.log(myQueue);
