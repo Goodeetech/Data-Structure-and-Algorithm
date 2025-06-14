@@ -607,3 +607,63 @@
 // myQueue.dequeue();
 
 // console.log(myQueue);
+
+const isValidParentensis = (str) => {
+  const stack = [];
+
+  const brackets = {
+    "{": "}",
+    "[": "]",
+    "(": ")",
+  };
+
+  for (let char of str) {
+    if (brackets[char]) {
+      stack.push(char);
+    } else {
+      const top = stack.pop();
+
+      if (!top || brackets[top] !== char) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+};
+
+function reverseString(str) {
+  const stack = [];
+
+  let results = "";
+
+  for (let char of str) {
+    stack.push(char);
+  }
+  while (stack.length > 0) {
+    results += stack.pop();
+  }
+  return results;
+}
+
+const string = reverseString("hello world");
+console.log(string);
+
+const balancedString = (str) => {
+  const stack = [];
+
+  const brackets = {
+    "*": "#",
+  };
+
+  for (let char of str) {
+    if (brackets[char]) {
+      stack.push(char);
+    } else {
+      const top = stack.pop();
+      if (!top || brackets[top] !== char) {
+        return false;
+      }
+    }
+  }
+  return stack.length == 0;
+};
