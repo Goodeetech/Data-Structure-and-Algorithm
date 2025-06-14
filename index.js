@@ -608,62 +608,113 @@
 
 // console.log(myQueue);
 
-const isValidParentensis = (str) => {
-  const stack = [];
+//
 
-  const brackets = {
-    "{": "}",
-    "[": "]",
-    "(": ")",
-  };
+//////////////////HASH-TABLE /////////////////
 
-  for (let char of str) {
-    if (brackets[char]) {
-      stack.push(char);
+// class HashTable {
+//   constructor(size = 5) {
+//     this.keyMap = new Array(size);
+//   }
+
+//   _hashFunction(key) {
+//     let sum = 0;
+//     const PRIME_NUMBER = 31;
+
+//     for (let i = 0; i < Math.min(key.length, 100); i++) {
+//       const charCode = key.charCodeAt(i) - 96;
+//       sum = (sum * PRIME_NUMBER + charCode) % this.keyMap.length;
+//     }
+//     return sum;
+//   }
+//   set(key, value) {
+//     const index = this._hashFunction(key);
+//     if (!this.keyMap[index]) {
+//       this.keyMap[index] = [];
+//     }
+//     this.keyMap[index].push([key, value]);
+//     return this;
+//   }
+
+//   get(key) {
+//     const index = this._hashFunction(key);
+//     if (this.keyMap[index]) {
+//       for (let i = 0; i < this.keyMap[index].length; i++) {
+//         if (this.keyMap[index][i][0] === key) {
+//           return this.keyMap[index][i][1];
+//         }
+//       }
+//     }
+//     return undefined;
+//   }
+//   getAllKeys() {
+//     let allKey = [];
+//     for (let i = 0; i < this.keyMap.length; i++) {
+//       if (this.keyMap[i]) {
+//         for (let j = 0; j < this.keyMap[i].length; j++) {
+//           allKey.push(this.keyMap[i][j][0]);
+//         }
+//       }
+//     }
+//     return allKey;
+//   }
+//   getAllValues() {
+//     const allValues = [];
+//     for (let i = 0; i < this.keyMap.length; i++) {
+//       if (this.keyMap[i]) {
+//         for (let j = 0; j < this.keyMap[i].length; j++) {
+//           allValues.push(this.keyMap[i][j][1]);
+//         }
+//       }
+//     }
+//     return allValues;
+//   }
+// }
+
+// const myPhoneBook = new HashTable();
+
+// myPhoneBook.set("Tomi", 5555552222);
+// myPhoneBook.set("Tobi", 555555333333);
+// myPhoneBook.set("Tolu", 5555554444);
+// myPhoneBook.set("Tomiwa", 5555557777);
+// console.log(myPhoneBook);
+// console.log(myPhoneBook.getAllKeys());
+// console.log(myPhoneBook.getAllValues());
+
+const text = "Hello my name name name is huxn";
+
+const getValues = (str) => {
+  const values = {};
+
+  str.split(" ").forEach((item) => {
+    if (values[item]) {
+      values[item] = values[item] + 1;
     } else {
-      const top = stack.pop();
-
-      if (!top || brackets[top] !== char) {
-        return false;
-      }
+      values[item] = 1;
     }
-  }
-  return stack.length === 0;
+  });
+  return values;
 };
 
-function reverseString(str) {
-  const stack = [];
+console.log(getValues(text));
 
-  let results = "";
+function twoSum(nums, target) {
+  const numMap = {};
 
-  for (let char of str) {
-    stack.push(char);
+  for (let i = 0; i < nums.length; i++) {
+    const compliment = target - nums[i];
+
+    if (compliment in numMap && numMap[compliment] !== i) {
+      return [numMap[compliment], i];
+    }
+
+    numMap[nums[i]] = i;
   }
-  while (stack.length > 0) {
-    results += stack.pop();
-  }
-  return results;
+  return [];
 }
 
-const string = reverseString("hello world");
-console.log(string);
+const num = [2, 7, 11, 15];
 
-const balancedString = (str) => {
-  const stack = [];
-
-  const brackets = {
-    "*": "#",
-  };
-
-  for (let char of str) {
-    if (brackets[char]) {
-      stack.push(char);
-    } else {
-      const top = stack.pop();
-      if (!top || brackets[top] !== char) {
-        return false;
-      }
-    }
-  }
-  return stack.length == 0;
-};
+const target = 9;
+const result = twoSum(num, target);
+console.log(result);
