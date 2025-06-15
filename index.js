@@ -681,40 +681,114 @@
 // console.log(myPhoneBook.getAllKeys());
 // console.log(myPhoneBook.getAllValues());
 
-const text = "Hello my name name name is huxn";
+// const text = "Hello my name name name is huxn";
 
-const getValues = (str) => {
-  const values = {};
+// const getValues = (str) => {
+//   const values = {};
 
-  str.split(" ").forEach((item) => {
-    if (values[item]) {
-      values[item] = values[item] + 1;
-    } else {
-      values[item] = 1;
-    }
-  });
-  return values;
-};
+//   str.split(" ").forEach((item) => {
+//     if (values[item]) {
+//       values[item] = values[item] + 1;
+//     } else {
+//       values[item] = 1;
+//     }
+//   });
+//   return values;
+// };
 
-console.log(getValues(text));
+// console.log(getValues(text));
 
-function twoSum(nums, target) {
-  const numMap = {};
+// function twoSum(nums, target) {
+//   const numMap = {};
 
-  for (let i = 0; i < nums.length; i++) {
-    const compliment = target - nums[i];
+//   for (let i = 0; i < nums.length; i++) {
+//     const compliment = target - nums[i];
 
-    if (compliment in numMap && numMap[compliment] !== i) {
-      return [numMap[compliment], i];
-    }
+//     if (compliment in numMap && numMap[compliment] !== i) {
+//       return [numMap[compliment], i];
+//     }
 
-    numMap[nums[i]] = i;
+//     numMap[nums[i]] = i;
+//   }
+//   return [];
+// }
+
+// const num = [2, 7, 11, 15];
+
+// const target = 9;
+// const result = twoSum(num, target);
+// console.log(result);
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.right = null;
+    this.left = null;
   }
-  return [];
 }
 
-const num = [2, 7, 11, 15];
+class BTS {
+  constructor() {
+    this.root = null;
+  }
+  insert(value) {
+    const newNode = new Node(value);
 
-const target = 9;
-const result = twoSum(num, target);
-console.log(result);
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    }
+
+    let temp = this.root;
+
+    while (true) {
+      if (temp.value === newNode.value) {
+        return undefined;
+      }
+      if (newNode.value < temp.value) {
+        if (temp.left === null) {
+          temp.left = newNode;
+          return this;
+        } else {
+          temp = temp.left;
+        }
+      } else {
+        if (temp.right === null) {
+          temp.right = newNode;
+          return this;
+        } else {
+          temp = temp.right;
+        }
+      }
+    }
+  }
+  getItem(value) {
+    let temp = this.root;
+
+    if (this.root === null) {
+      return undefined;
+    }
+
+    while (temp) {
+      if (value === temp.value) {
+        return temp;
+      }
+      if (value > temp.value) {
+        temp = temp.right;
+      } else {
+        if (value < temp.value) {
+          temp = temp.left;
+        }
+      }
+    }
+    return undefined;
+  }
+}
+
+const tree = new BTS();
+tree.insert(20);
+tree.insert(30);
+tree.insert(50);
+tree.insert(10);
+tree.insert(2);
+console.log(tree.getItem(10));
