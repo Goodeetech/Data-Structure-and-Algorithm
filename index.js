@@ -793,5 +793,6 @@ tree.insert(10);
 tree.insert(2);
 tree.insert(80);
 tree.insert(900);
+tree.insert(700);
 console.log(tree);
-console.log(tree.getItem(10));
+console.log(tree.getItem(700));
