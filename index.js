@@ -719,81 +719,102 @@
 // const result = twoSum(num, target);
 // console.log(result);
 
-// class Node {
-//   constructor(value) {
-//     this.value = value;
-//     this.right = null;
-//     this.left = null;
-//   }
-// }
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.right = null;
+    this.left = null;
+  }
+}
 
-// class BTS {
-//   constructor() {
-//     this.root = null;
-//   }
-//   insert(value) {
-//     const newNode = new Node(value);
+class BTS {
+  constructor() {
+    this.root = null;
+  }
+  insert(value) {
+    const newNode = new Node(value);
 
-//     if (this.root === null) {
-//       this.root = newNode;
-//       return this;
-//     }
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    }
 
-//     let temp = this.root;
+    let temp = this.root;
 
-//     while (true) {
-//       if (temp.value === newNode.value) {
-//         return undefined;
-//       }
-//       if (newNode.value < temp.value) {
-//         if (temp.left === null) {
-//           temp.left = newNode;
-//           return this;
-//         } else {
-//           temp = temp.left;
-//         }
-//       } else {
-//         if (temp.right === null) {
-//           temp.right = newNode;
-//           return this;
-//         } else {
-//           temp = temp.right;
-//         }
-//       }
-//     }
-//   }
-//   getItem(value) {
-//     let temp = this.root;
+    while (true) {
+      if (temp.value === newNode.value) {
+        return undefined;
+      }
+      if (newNode.value < temp.value) {
+        if (temp.left === null) {
+          temp.left = newNode;
+          return this;
+        } else {
+          temp = temp.left;
+        }
+      } else {
+        if (temp.right === null) {
+          temp.right = newNode;
+          return this;
+        } else {
+          temp = temp.right;
+        }
+      }
+    }
+  }
+  getItem(value) {
+    let temp = this.root;
 
-//     if (this.root === null) {
-//       return undefined;
-//     }
+    if (this.root === null) {
+      return undefined;
+    }
 
-//     while (temp) {
-//       if (value === temp.value) {
-//         return temp;
-//       }
-//       if (value > temp.value) {
-//         temp = temp.right;
-//       } else {
-//         if (value < temp.value) {
-//           temp = temp.left;
-//         }
-//       }
-//     }
-//     return undefined;
-//   }
-// }
+    while (temp) {
+      if (value === temp.value) {
+        return temp;
+      }
+      if (value > temp.value) {
+        temp = temp.right;
+      } else {
+        if (value < temp.value) {
+          temp = temp.left;
+        }
+      }
+    }
+    return undefined;
+  }
 
-// const tree = new BTS();
-// tree.insert(20);
-// tree.insert(30);
-// tree.insert(50);
-// tree.insert(10);
-// tree.insert(2);
-// tree.insert(80);
-// tree.insert(900);
-// tree.insert(700);
+  bfs() {
+    let current = this.root;
+    let data = [];
+    let queue = [];
+
+    queue.push(current);
+
+    while (queue.length) {
+      current = queue.shift();
+      data.push(current.value);
+
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+
+    return data;
+  }
+}
+
+const tree = new BTS();
+tree.insert(20);
+tree.insert(30);
+tree.insert(50);
+tree.insert(10);
+tree.insert(2);
+tree.insert(80);
+tree.insert(900);
+tree.insert(700);
+tree.insert(7);
+
+console.log(tree.bfs());
 // console.log(tree);
 // console.log(tree.getItem(700));
 
@@ -811,11 +832,11 @@
 
 // countDown(9);
 
-const factorial = (number) => {
-  if (number === 0) {
-    return 1;
-  }
-  return number * factorial(number - 1);
-};
+// const factorial = (number) => {
+//   if (number === 0) {
+//     return 1;
+//   }
+//   return number * factorial(number - 1);
+// };
 
-console.log(factorial(5));
+// console.log(factorial(4));
