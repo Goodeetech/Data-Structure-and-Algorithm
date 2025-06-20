@@ -802,13 +802,33 @@ class BTS {
     return data;
   }
 
-  dfs(node = this.root, data = []) {
+  dfsPreOrder(node = this.root, data = []) {
     if (node === null) return data;
     console.log("----------", data);
     data.push(node.value);
 
-    if (node.left) this.dfs(node.left, data);
-    if (node.right) this.dfs(node.right, data);
+    if (node.left) this.dfsPreOrder(node.left, data);
+    if (node.right) this.dfsPreOrder(node.right, data);
+    return data;
+  }
+  dfsPostOrder(node = this.root, data = []) {
+    if (node === null) return data;
+    console.log("----------", data);
+
+    if (node.left) this.dfsPostOrder(node.left, data);
+    if (node.right) this.dfsPostOrder(node.right, data);
+    data.push(node.value);
+
+    return data;
+  }
+  dfsInOrder(node = this.root, data = []) {
+    if (node === null) return data;
+    console.log("----------", data);
+
+    if (node.left) this.dfsInOrder(node.left, data);
+    data.push(node.value);
+    if (node.right) this.dfsInOrder(node.right, data);
+
     return data;
   }
 }
@@ -825,7 +845,8 @@ tree.insert(700);
 tree.insert(7);
 
 console.log(tree.bfs());
-console.log(tree.dfs());
+// console.log(tree.dfsPreOrder());
+console.log(tree.dfsPostOrder());
 // console.log(tree);
 // console.log(tree.getItem(700));
 
