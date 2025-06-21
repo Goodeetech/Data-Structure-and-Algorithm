@@ -907,7 +907,18 @@ class Graph {
     }
     return false;
   }
-  removeVertex(vtx) {}
+  removeVertex(vtx) {
+    if (!this.adjacencyList[vtx]) return;
+
+    for (let neighbour of this.adjacencyList[vtx]) {
+      this.adjacencyList[neighbour] = this.adjacencyList[neighbour].filter(
+        (v) => v !== vtx
+      );
+    }
+
+    delete this.adjacencyList[vtx];
+    return this;
+  }
 }
 
 const vertex = new Graph();
