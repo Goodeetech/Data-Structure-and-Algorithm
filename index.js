@@ -930,5 +930,6 @@ vertex.addVertex("E");
 vertex.addEdges("A", "B");
 vertex.addEdges("B", "C");
 
-vertex.removeEdges("A", "B");
+vertex.removeVertex("C");
+
 console.log(vertex);
