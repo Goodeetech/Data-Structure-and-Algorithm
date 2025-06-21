@@ -719,135 +719,135 @@
 // const result = twoSum(num, target);
 // console.log(result);
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.right = null;
-    this.left = null;
-  }
-}
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.right = null;
+//     this.left = null;
+//   }
+// }
 
-class BTS {
-  constructor() {
-    this.root = null;
-  }
-  insert(value) {
-    const newNode = new Node(value);
+// class BTS {
+//   constructor() {
+//     this.root = null;
+//   }
+//   insert(value) {
+//     const newNode = new Node(value);
 
-    if (this.root === null) {
-      this.root = newNode;
-      return this;
-    }
+//     if (this.root === null) {
+//       this.root = newNode;
+//       return this;
+//     }
 
-    let temp = this.root;
+//     let temp = this.root;
 
-    while (true) {
-      if (temp.value === newNode.value) {
-        return undefined;
-      }
-      if (newNode.value < temp.value) {
-        if (temp.left === null) {
-          temp.left = newNode;
-          return this;
-        } else {
-          temp = temp.left;
-        }
-      } else {
-        if (temp.right === null) {
-          temp.right = newNode;
-          return this;
-        } else {
-          temp = temp.right;
-        }
-      }
-    }
-  }
-  getItem(value) {
-    let temp = this.root;
+//     while (true) {
+//       if (temp.value === newNode.value) {
+//         return undefined;
+//       }
+//       if (newNode.value < temp.value) {
+//         if (temp.left === null) {
+//           temp.left = newNode;
+//           return this;
+//         } else {
+//           temp = temp.left;
+//         }
+//       } else {
+//         if (temp.right === null) {
+//           temp.right = newNode;
+//           return this;
+//         } else {
+//           temp = temp.right;
+//         }
+//       }
+//     }
+//   }
+//   getItem(value) {
+//     let temp = this.root;
 
-    if (this.root === null) {
-      return undefined;
-    }
+//     if (this.root === null) {
+//       return undefined;
+//     }
 
-    while (temp) {
-      if (value === temp.value) {
-        return temp;
-      }
-      if (value > temp.value) {
-        temp = temp.right;
-      } else {
-        if (value < temp.value) {
-          temp = temp.left;
-        }
-      }
-    }
-    return undefined;
-  }
+//     while (temp) {
+//       if (value === temp.value) {
+//         return temp;
+//       }
+//       if (value > temp.value) {
+//         temp = temp.right;
+//       } else {
+//         if (value < temp.value) {
+//           temp = temp.left;
+//         }
+//       }
+//     }
+//     return undefined;
+//   }
 
-  bfs() {
-    let current = this.root;
-    let data = [];
-    let queue = [];
+//   bfs() {
+//     let current = this.root;
+//     let data = [];
+//     let queue = [];
 
-    queue.push(current);
+//     queue.push(current);
 
-    while (queue.length) {
-      current = queue.shift();
-      data.push(current.value);
+//     while (queue.length) {
+//       current = queue.shift();
+//       data.push(current.value);
 
-      if (current.left) queue.push(current.left);
-      if (current.right) queue.push(current.right);
-    }
+//       if (current.left) queue.push(current.left);
+//       if (current.right) queue.push(current.right);
+//     }
 
-    return data;
-  }
+//     return data;
+//   }
 
-  dfsPreOrder(node = this.root, data = []) {
-    if (node === null) return data;
-    console.log("----------", data);
-    data.push(node.value);
+//   dfsPreOrder(node = this.root, data = []) {
+//     if (node === null) return data;
+//     console.log("----------", data);
+//     data.push(node.value);
 
-    if (node.left) this.dfsPreOrder(node.left, data);
-    if (node.right) this.dfsPreOrder(node.right, data);
-    return data;
-  }
-  dfsPostOrder(node = this.root, data = []) {
-    if (node === null) return data;
-    console.log("----------", data);
+//     if (node.left) this.dfsPreOrder(node.left, data);
+//     if (node.right) this.dfsPreOrder(node.right, data);
+//     return data;
+//   }
+//   dfsPostOrder(node = this.root, data = []) {
+//     if (node === null) return data;
+//     console.log("----------", data);
 
-    if (node.left) this.dfsPostOrder(node.left, data);
-    if (node.right) this.dfsPostOrder(node.right, data);
-    data.push(node.value);
+//     if (node.left) this.dfsPostOrder(node.left, data);
+//     if (node.right) this.dfsPostOrder(node.right, data);
+//     data.push(node.value);
 
-    return data;
-  }
-  dfsInOrder(node = this.root, data = []) {
-    if (node === null) return data;
-    console.log("----------", data);
+//     return data;
+//   }
+//   dfsInOrder(node = this.root, data = []) {
+//     if (node === null) return data;
+//     console.log("----------", data);
 
-    if (node.left) this.dfsInOrder(node.left, data);
-    data.push(node.value);
-    if (node.right) this.dfsInOrder(node.right, data);
+//     if (node.left) this.dfsInOrder(node.left, data);
+//     data.push(node.value);
+//     if (node.right) this.dfsInOrder(node.right, data);
 
-    return data;
-  }
-}
+//     return data;
+//   }
+// }
 
-const tree = new BTS();
-tree.insert(20);
-tree.insert(30);
-tree.insert(50);
-tree.insert(10);
-tree.insert(2);
-tree.insert(80);
-tree.insert(900);
-tree.insert(700);
-tree.insert(7);
+// const tree = new BTS();
+// tree.insert(20);
+// tree.insert(30);
+// tree.insert(50);
+// tree.insert(10);
+// tree.insert(2);
+// tree.insert(80);
+// tree.insert(900);
+// tree.insert(700);
+// tree.insert(7);
 
-console.log(tree.bfs());
-// console.log(tree.dfsPreOrder());
-console.log(tree.dfsPostOrder());
-// console.log(tree);
+// console.log(tree.bfs());
+// // console.log(tree.dfsPreOrder());
+// console.log(tree.dfsPostOrder());
+// // console.log(tree);
 // console.log(tree.getItem(700));
 
 //////  RECURSION ////////
@@ -872,3 +872,52 @@ console.log(tree.dfsPostOrder());
 // };
 
 // console.log(factorial(4));
+
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addVertex(vtx) {
+    if (!this.adjacencyList[vtx]) {
+      this.adjacencyList[vtx] = [];
+      return true;
+    }
+    return false;
+  }
+
+  addEdges(vtx1, vtx2) {
+    if (this.adjacencyList[vtx1] && this.adjacencyList[vtx2]) {
+      this.adjacencyList[vtx1].push(vtx2);
+      this.adjacencyList[vtx2].push(vtx1);
+      return true;
+    }
+    return false;
+  }
+
+  removeEdges(vtx1, vtx2) {
+    if (this.adjacencyList[vtx1] && this.adjacencyList[vtx2]) {
+      this.adjacencyList[vtx1] = this.adjacencyList[vtx1].filter(
+        (v) => v !== vtx2
+      );
+      this.adjacencyList[vtx2] = this.adjacencyList[vtx2].filter(
+        (v) => v !== vtx1
+      );
+      return true;
+    }
+    return false;
+  }
+  removeVertex(vtx) {}
+}
+
+const vertex = new Graph();
+vertex.addVertex("A");
+vertex.addVertex("B");
+vertex.addVertex("C");
+vertex.addVertex("D");
+vertex.addVertex("E");
+vertex.addEdges("A", "B");
+vertex.addEdges("B", "C");
+
+vertex.removeEdges("A", "B");
+console.log(vertex);
